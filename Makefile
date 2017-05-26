@@ -44,16 +44,12 @@ FINCS=$(foreach i, $(INCS), -I $i)
 FCPPS=$(foreach i, $(CPPS), $(SRC)/$i)
 FLDIR=$(foreach i, $(LDIR), -L $i)
 FLIBS=$(foreach i, $(LIBS), -l $i)
-FLAGS=-DGLEW_STATIC $(FCPPS) $(FINCS) $(FLDIR) $(FLIBS)
+FLAGS=$(FCPPS) $(FINCS) $(FLDIR) $(FLIBS) -DGLEW_STATIC
 
 # Rules
 all:
-ifneq ($(OS),Windows_NT)
-ifneq ($(shell bash -c 'read -p "Install dependencies? (y\\n): " inst; echo $$inst'),n)
-	sudo apt-get -qq install libglew-dev
-	sudo apt-get -qq install libsdl2-dev
-endif
-	g++ $(FLAGS) -o $(EXE) -std=c++11
+ifeq ($(OS),Windows_NT)
+	g++ $(FLAGS) -o $(EXE) -std=c++11 -mwindows -static -static-libgcc -static-libstdc++
 else
-	g++ $(FLAGS) -o $(EXE) -std=c++11 -mwindows
+	g++ $(FLAGS) -o $(EXE) -std=c++11
 endif
