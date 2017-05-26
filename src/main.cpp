@@ -11,7 +11,7 @@ Texture *alistarTex, *blitzTex;
 
 Model *alistar, *blitz;
 
-mat4 base, transform;
+mat4 proj, projView, transform;
 
 void init();
 void quit();
@@ -64,23 +64,23 @@ void setup() {
 
     glViewport(0, 0, width, height);
 
-    base = mat4::perspective(0.610865f, (float)width / height, 0.1f, 100.0f) *
-        mat4::lookAt(vec3(0, -5, 5), vec3(0, 0, 0.6f));
+    proj = mat4::perspective(0.610865f, (float)width / height, 0.1f, 100.0f);
 }
 
 void draw() {
+    float time = clock() / (float)CLOCKS_PER_SEC;
+
+    projView = proj * mat4::lookAt(vec3(cos(time) * 5, sin(time) * 5, 5), vec3(0, 0, 0.6f));
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    transform = base *
-        mat4::translate(vec3(-1.2f, 0, 0)) *
-        mat4::rotate(vec3(0, 0, 1), clock() / (float)CLOCKS_PER_SEC);
+    transform = projView * mat4::translate(vec3(-1.2f, 0, 0)) *
+        mat4::rotate(vec3(0, 0, 1), (2 * M_PI) * sin(3 * time) * cos(0.3f * time));
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     alistarTex->bind();
     alistar->draw();
 
-    transform = base *
-        mat4::translate(vec3(1.2f, 0, 0)) *
-        mat4::rotate(vec3(0, 0, 1), -clock() / (float)CLOCKS_PER_SEC);
+    transform = projView * mat4::translate(vec3(1.2f, 0, 0));
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     blitzTex->bind();
     blitz->draw();
