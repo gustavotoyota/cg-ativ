@@ -16,8 +16,6 @@ mat4 base, transform;
 void init() {
     window = new Window();
 	SDL_SetWindowTitle(window->getHandle(), "CG - Atividade");
-    SDL_SetWindowSize(window->getHandle(), 600, 600);
-	SDL_SetWindowPosition(window->getHandle(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 	SDL_MaximizeWindow(window->getHandle());
 	SDL_ShowWindow(window->getHandle());
 
@@ -67,14 +65,14 @@ void draw() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     transform = base *
-        mat4::translate(vec3(-1, 0, 0)) *
+        mat4::translate(vec3(-1.2f, 0, 0)) *
         mat4::rotate(vec3(0, 0, 1), clock() / (float)CLOCKS_PER_SEC);
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     alistarTex->bind();
     alistar->draw();
 
     transform = base *
-        mat4::translate(vec3(1, 0, 0)) *
+        mat4::translate(vec3(1.2f, 0, 0)) *
         mat4::rotate(vec3(0, 0, 1), -clock() / (float)CLOCKS_PER_SEC);
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     blitzTex->bind();
