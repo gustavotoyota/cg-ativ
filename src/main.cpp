@@ -13,10 +13,15 @@ Model *alistar, *blitz;
 
 mat4 base, transform;
 
+void init();
+void quit();
+void setup();
+void draw();
+void run();
+
 void init() {
     window = new Window();
 	SDL_SetWindowTitle(window->getHandle(), "CG - Atividade");
-	SDL_MaximizeWindow(window->getHandle());
 	SDL_ShowWindow(window->getHandle());
 
     program = new Program({
@@ -36,6 +41,8 @@ void init() {
     blitz = new Model(*program, "res/blitz/blitz.obj");
 
     glEnable(GL_DEPTH_TEST);
+	
+	setup();
 }
 
 void quit() {
