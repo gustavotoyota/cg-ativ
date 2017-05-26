@@ -14,7 +14,6 @@ EXE=cg-ativ
 CPPS=\
 	main.cpp\
 	misc/utils.cpp\
-	math/ivec2.cpp\
 	math/vec2.cpp\
 	math/vec3.cpp\
 	math/vec4.cpp\

@@ -7,8 +7,8 @@ Texture::Texture() {
 	glGenTextures(1, &handle);
 }
 
-Texture::Texture(void * pixels, ivec2 size): Texture() {
-    loadPixels(pixels, size);
+Texture::Texture(void * pixels, int width, int height): Texture() {
+    loadPixels(pixels, width, height);
 }
 
 Texture::Texture(std::string fileName): Texture() {
@@ -27,15 +27,20 @@ GLuint Texture::getHandle() {
 	return handle;
 }
 
-ivec2 Texture::getSize() {
-	return size;
+int Texture::getWidth() {
+	return width;
 }
 
-void Texture::loadPixels(void * pixels, ivec2 size) {
-	this->size = size;
+int Texture::getHeight() {
+	return height;
+}
 
-	glBindTexture(GL_TEXTURE_2D, this->handle);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+void Texture::loadPixels(void * pixels, int width, int height) {
+	this->width = width;
+	this->height = height;
+
+	glBindTexture(GL_TEXTURE_2D, handle);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
 }
 
 void Texture::loadFile(std::string fileName) {
@@ -45,7 +50,7 @@ void Texture::loadFile(std::string fileName) {
 	if (!pixels)
 		throw;
 
-	loadPixels(pixels, ivec2(width, height));
+	loadPixels(pixels, width, height);
 
 	stbi_image_free(pixels);
 }
@@ -57,7 +62,7 @@ void Texture::loadMemory(void *addr, int size) {
 	if (!image)
 		throw;
 
-	loadPixels(image, ivec2(width, height));
+	loadPixels(image, width, height);
 
 	stbi_image_free(image);
 }

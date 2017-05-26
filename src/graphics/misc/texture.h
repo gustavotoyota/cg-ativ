@@ -10,22 +10,25 @@ struct ivec2;
 class Texture {
 public:
 	Texture();
-    Texture(void *pixels, ivec2 size);
+    Texture(void *pixels, int width, int height);
     Texture(std::string fileName);
     Texture(void *addr, int size);
 	~Texture();
 
 	GLuint getHandle();
-	ivec2 getSize();
+	int getWidth();
+	int getHeight();
 
-	void loadPixels(void *pixels, ivec2 size);
+	void loadPixels(void *pixels, int width, int height);
 	void loadFile(std::string fileName);
 	void loadMemory(void *addr, int size);
 
 	void bind();
 private:
 	GLuint handle;
-	ivec2 size;
+
+	int width;
+	int height;
 };
 
 #endif
