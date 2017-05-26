@@ -2,14 +2,15 @@
 SRC=src
 DEPS=\
 	deps/SDL/include\
-	deps/glew/include
+	deps/glew/include\
+	deps/stb/include
 INCS=$(SRC) $(DEPS)
 LDIR=\
 	deps/SDL/lib\
 	deps/glew/lib
 
 # Files
-EXE=ativ1
+EXE=cg-ativ
 CPPS=\
 	main.cpp\
 	misc/utils.cpp\
@@ -19,6 +20,7 @@ CPPS=\
 	math/vec4.cpp\
 	math/mat4.cpp\
 	graphics/misc/window.cpp\
+	graphics/misc/texture.cpp\
 	graphics/program/program.cpp\
 	graphics/program/shader.cpp\
 	graphics/model/mesh.cpp\

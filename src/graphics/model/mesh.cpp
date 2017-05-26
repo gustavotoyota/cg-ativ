@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <fstream>
 

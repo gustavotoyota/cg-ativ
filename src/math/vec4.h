@@ -16,31 +16,31 @@ struct vec4 {
 	vec4(float x, const vec3 &v);
 	vec4(const vec3 &v, float w);
 
-	float len();
-	float dist(const vec4 &v);
-	float dot(const vec4 &v);
-	vec4 normal();
+	float len() const;
+	float dist(const vec4 &v) const;
+	float dot(const vec4 &v) const;
+    const vec4 normal() const;
 
 	float operator [](int i) const;
 	float &operator [](int i);
 
-    vec4 operator +(float s);
-    vec4 operator -(float s);
-    vec4 operator *(float s);
-    vec4 operator /(float s);
-    vec4 operator +=(float s);
-    vec4 operator -=(float s);
-    vec4 operator *=(float s);
-    vec4 operator /=(float s);
+    const vec4 operator +(float s) const;
+    const vec4 operator -(float s) const;
+    const vec4 operator *(float s) const;
+    const vec4 operator /(float s) const;
+    const vec4 operator +(const vec4 &v) const;
+    const vec4 operator -(const vec4 &v) const;
+    const vec4 operator *(const vec4 &v) const;
+    const vec4 operator /(const vec4 &v) const;
 
-	vec4 operator +(const vec4 &v);
-	vec4 operator -(const vec4 &v);
-	vec4 operator *(const vec4 &v);
-	vec4 operator /(const vec4 &v);
-	vec4 operator +=(const vec4 &v);
-	vec4 operator -=(const vec4 &v);
-	vec4 operator *=(const vec4 &v);
-	vec4 operator /=(const vec4 &v);
+    vec4 &operator +=(float s);
+    vec4 &operator -=(float s);
+    vec4 &operator *=(float s);
+    vec4 &operator /=(float s);
+	vec4 &operator +=(const vec4 &v);
+	vec4 &operator -=(const vec4 &v);
+	vec4 &operator *=(const vec4 &v);
+	vec4 &operator /=(const vec4 &v);
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <math.h>
 
@@ -21,66 +21,66 @@ int & ivec2::operator[](int i) {
 	return *((int *)this + i);
 }
 
-ivec2 ivec2::operator+(int s) {
+const ivec2 ivec2::operator+(int s) const {
     return *this + ivec2(s);
 }
 
-ivec2 ivec2::operator-(int s) {
+const ivec2 ivec2::operator-(int s) const {
     return *this - ivec2(s);
 }
 
-ivec2 ivec2::operator*(int s) {
+const ivec2 ivec2::operator*(int s) const {
     return *this * ivec2(s);
 }
 
-ivec2 ivec2::operator/(int s) {
+const ivec2 ivec2::operator/(int s) const {
     return *this / ivec2(s);
 }
 
-ivec2 ivec2::operator+=(int s) {
-    return *this = *this + s;
-}
-
-ivec2 ivec2::operator-=(int s) {
-    return *this = *this - s;
-}
-
-ivec2 ivec2::operator*=(int s) {
-    return *this = *this * s;
-}
-
-ivec2 ivec2::operator/=(int s) {
-    return *this = *this / s;
-}
-
-ivec2 ivec2::operator+(const ivec2 & v) {
+const ivec2 ivec2::operator+(const ivec2 & v) const {
 	return ivec2(x + v.x, y + v.y);
 }
 
-ivec2 ivec2::operator-(const ivec2 & v) {
+const ivec2 ivec2::operator-(const ivec2 & v) const {
 	return ivec2(x - v.x, y - v.y);
 }
 
-ivec2 ivec2::operator*(const ivec2 & v) {
+const ivec2 ivec2::operator*(const ivec2 & v) const {
 	return ivec2(x * v.x, y * v.y);
 }
 
-ivec2 ivec2::operator/(const ivec2 & v) {
+const ivec2 ivec2::operator/(const ivec2 & v) const {
 	return ivec2(x / v.x, y / v.y);
 }
 
-ivec2 ivec2::operator+=(const ivec2 & v) {
+ivec2 &ivec2::operator+=(int s) {
+    return *this = *this + s;
+}
+
+ivec2 &ivec2::operator-=(int s) {
+    return *this = *this - s;
+}
+
+ivec2 &ivec2::operator*=(int s) {
+    return *this = *this * s;
+}
+
+ivec2 &ivec2::operator/=(int s) {
+    return *this = *this / s;
+}
+
+ivec2 &ivec2::operator+=(const ivec2 & v) {
 	return *this = *this + v;
 }
 
-ivec2 ivec2::operator-=(const ivec2 & v) {
+ivec2 &ivec2::operator-=(const ivec2 & v) {
 	return *this = *this - v;
 }
 
-ivec2 ivec2::operator*=(const ivec2 & v) {
+ivec2 &ivec2::operator*=(const ivec2 & v) {
 	return *this = *this * v;
 }
 
-ivec2 ivec2::operator/=(const ivec2 & v) {
+ivec2 &ivec2::operator/=(const ivec2 & v) {
 	return *this = *this / v;
 }

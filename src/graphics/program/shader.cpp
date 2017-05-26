@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <iostream>
 #include <exception>
@@ -6,7 +6,7 @@
 using namespace std;
 
 Shader::Shader(GLuint type) {
-	name = glCreateShader(type);
+	handle = glCreateShader(type);
 }
 
 Shader::Shader(GLuint type, std::string fileName): Shader(type) {
@@ -14,28 +14,28 @@ Shader::Shader(GLuint type, std::string fileName): Shader(type) {
 }
 
 Shader::~Shader() {
-	glDeleteShader(name);
+	glDeleteShader(handle);
 }
 
-GLuint Shader::getName() {
-	return name;
+GLuint Shader::getHandle() {
+	return handle;
 }
 
 void Shader::loadSource(string source) {
 	const GLchar *sources[1] = {source.c_str()};
 	GLint lengths[1] = {(GLint)source.length()};
 
-	glShaderSource(name, 1, sources, lengths);
-	glCompileShader(name);
+	glShaderSource(handle, 1, sources, lengths);
+	glCompileShader(handle);
 
 	GLint status;
-	glGetShaderiv(name, GL_COMPILE_STATUS, &status);
+	glGetShaderiv(handle, GL_COMPILE_STATUS, &status);
 	if (status)
 		return;
 
 	GLchar log[1024];
 	GLsizei length;
-	glGetShaderInfoLog(name, sizeof(log), &length, log);
+	glGetShaderInfoLog(handle, sizeof(log), &length, log);
 	
 	cerr << log << "\n";
 

@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <exception>
 
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Window::Window() {
+Window::Window(bool resizable) {
 	if (SDL_Init(SDL_INIT_EVERYTHING))
 		throw;
 
@@ -19,7 +19,8 @@ Window::Window() {
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
-	handle = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_HIDDEN | SDL_WINDOW_OPENGL);
+	handle = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480,
+		SDL_WINDOW_HIDDEN | SDL_WINDOW_OPENGL | (resizable ? SDL_WINDOW_RESIZABLE : 0));
 	if (!handle)
 		throw exception();
 

@@ -5,7 +5,7 @@
 
 class Window {
 public:
-	Window();
+	Window(bool resizable = true);
 	~Window();
 
 	SDL_Window *getHandle();

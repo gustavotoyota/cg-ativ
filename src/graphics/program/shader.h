@@ -11,12 +11,12 @@ public:
     Shader(GLuint type, std::string fileName);
 	~Shader();
 
-	GLuint getName();
+	GLuint getHandle();
 
 	void loadSource(std::string source);
 	void loadFile(std::string fileName);
 private:
-	GLuint name;
+	GLuint handle;
 };
 
 #endif

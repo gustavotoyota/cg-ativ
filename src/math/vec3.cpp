@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <math.h>
 
@@ -20,23 +20,23 @@ vec3::vec3(float x, const vec2 & v): vec3(x, v.x, v.y) {
 vec3::vec3(const vec2 & v, float z): vec3(v.x, v.y, z) {
 }
 
-float vec3::len() {
+float vec3::len() const {
     return (float)sqrt(dot(*this));
 }
 
-float vec3::dist(const vec3 &v) {
+float vec3::dist(const vec3 &v) const {
     return (*this - v).len();
 }
 
-float vec3::dot(const vec3 &v) {
+float vec3::dot(const vec3 &v) const {
     return x * v.x + y * v.y + z * v.z;
 }
 
-vec3 vec3::cross(const vec3 &v) {
+const vec3 vec3::cross(const vec3 &v) const {
     return vec3(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x);
 }
 
-vec3 vec3::normal() {
+const vec3 vec3::normal() const {
     return *this / len();
 }
 
@@ -48,66 +48,66 @@ float & vec3::operator[](int i) {
 	return *((float *)this + i);
 }
 
-vec3 vec3::operator+(float s) {
+const vec3 vec3::operator+(float s) const {
     return *this + vec3(s);
 }
 
-vec3 vec3::operator-(float s) {
+const vec3 vec3::operator-(float s) const {
     return *this - vec3(s);
 }
 
-vec3 vec3::operator*(float s) {
+const vec3 vec3::operator*(float s) const {
     return *this * vec3(s);
 }
 
-vec3 vec3::operator/(float s) {
+const vec3 vec3::operator/(float s) const {
     return *this / vec3(s);
 }
 
-vec3 vec3::operator+=(float s) {
-    return *this += vec3(s);
-}
-
-vec3 vec3::operator-=(float s) {
-    return *this -= vec3(s);
-}
-
-vec3 vec3::operator*=(float s) {
-    return *this *= vec3(s);
-}
-
-vec3 vec3::operator/=(float s) {
-    return *this /= vec3(s);
-}
-
-vec3 vec3::operator +(const vec3 &v) {
+const vec3 vec3::operator +(const vec3 &v) const {
     return vec3(x + v.x, y + v.y, z + v.z);
 }
 
-vec3 vec3::operator -(const vec3 &v) {
+const vec3 vec3::operator -(const vec3 &v) const {
     return vec3(x - v.x, y - v.y, z - v.z);
 }
 
-vec3 vec3::operator *(const vec3 &v) {
+const vec3 vec3::operator *(const vec3 &v) const {
     return vec3(x * v.x, y * v.y, z * v.z);
 }
 
-vec3 vec3::operator /(const vec3 &v) {
+const vec3 vec3::operator /(const vec3 &v) const {
     return vec3(x / v.x, y / v.y, z / v.z);
 }
 
-vec3 vec3::operator +=(const vec3 &v) {
+vec3 &vec3::operator+=(float s) {
+    return *this += vec3(s);
+}
+
+vec3 &vec3::operator-=(float s) {
+    return *this -= vec3(s);
+}
+
+vec3 &vec3::operator*=(float s) {
+    return *this *= vec3(s);
+}
+
+vec3 &vec3::operator/=(float s) {
+    return *this /= vec3(s);
+}
+
+vec3 &vec3::operator +=(const vec3 &v) {
 	return *this = *this + v;
 }
 
-vec3 vec3::operator -=(const vec3 &v) {
+vec3 &vec3::operator -=(const vec3 &v) {
 	return *this = *this - v;
 }
 
-vec3 vec3::operator*=(const vec3 & v) {
+vec3 &vec3::operator*=(const vec3 & v) {
 	return *this = *this * v;
 }
 
-vec3 vec3::operator /=(const vec3 &v) {
+vec3 &vec3::operator /=(const vec3 &v) {
 	return *this = *this / v;
 }

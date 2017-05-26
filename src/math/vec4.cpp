@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <math.h>
 
@@ -30,19 +30,19 @@ vec4::vec4(float x, const vec3 & v): vec4(x, v.x, v.y, v.z) {
 vec4::vec4(const vec3 & v, float w): vec4(v.x, v.y, v.z, w) {
 }
 
-float vec4::len() {
+float vec4::len() const {
 	return (float)sqrt(dot(*this));
 }
 
-float vec4::dist(const vec4 &v) {
+float vec4::dist(const vec4 &v) const {
 	return (*this - v).len();
 }
 
-float vec4::dot(const vec4 &v) {
+float vec4::dot(const vec4 &v) const {
 	return x * v.x + y * v.y + z * v.z + w * v.w;
 }
 
-vec4 vec4::normal() {
+const vec4 vec4::normal() const {
 	return *this / len();
 }
 
@@ -54,66 +54,66 @@ float & vec4::operator[](int i) {
 	return *((float *)this + i);
 }
 
-vec4 vec4::operator+(float s) {
+const vec4 vec4::operator+(float s) const {
     return *this + vec4(s);
 }
 
-vec4 vec4::operator-(float s) {
+const vec4 vec4::operator-(float s) const {
     return *this - vec4(s);
 }
 
-vec4 vec4::operator*(float s) {
+const vec4 vec4::operator*(float s) const {
     return *this * vec4(s);
 }
 
-vec4 vec4::operator/(float s) {
+const vec4 vec4::operator/(float s) const {
     return *this / vec4(s);
 }
 
-vec4 vec4::operator+=(float s) {
+const vec4 vec4::operator +(const vec4 &v) const {
+    return vec4(x + v.x, y + v.y, z + v.z, w + v.w);
+}
+
+const vec4 vec4::operator -(const vec4 &v) const {
+    return vec4(x - v.x, y - v.y, z - v.z, w - v.w);
+}
+
+const vec4 vec4::operator *(const vec4 &v) const {
+    return vec4(x * v.x, y * v.y, z * v.z, w * v.w);
+}
+
+const vec4 vec4::operator /(const vec4 &v) const {
+    return vec4(x / v.x, y / v.y, z / v.z, w / v.w);
+}
+
+vec4 &vec4::operator+=(float s) {
     return *this += vec4(s);
 }
 
-vec4 vec4::operator-=(float s) {
+vec4 &vec4::operator-=(float s) {
     return *this -= vec4(s);
 }
 
-vec4 vec4::operator*=(float s) {
+vec4 &vec4::operator*=(float s) {
     return *this *= vec4(s);
 }
 
-vec4 vec4::operator/=(float s) {
+vec4 &vec4::operator/=(float s) {
     return *this /= vec4(s);
 }
 
-vec4 vec4::operator +(const vec4 &v) {
-	return vec4(x + v.x, y + v.y, z + v.z, w + v.w);
-}
-
-vec4 vec4::operator -(const vec4 &v) {
-	return vec4(x - v.x, y - v.y, z - v.z, w - v.w);
-}
-
-vec4 vec4::operator *(const vec4 &v) {
-	return vec4(x * v.x, y * v.y, z * v.z, w * v.w);
-}
-
-vec4 vec4::operator /(const vec4 &v) {
-	return vec4(x / v.x, y / v.y, z / v.z, w / v.w);
-}
-
-vec4 vec4::operator +=(const vec4 &v) {
+vec4 &vec4::operator +=(const vec4 &v) {
 	return *this = *this + v;
 }
 
-vec4 vec4::operator -=(const vec4 &v) {
+vec4 &vec4::operator -=(const vec4 &v) {
 	return *this = *this - v;
 }
 
-vec4 vec4::operator*=(const vec4 & v) {
+vec4 &vec4::operator*=(const vec4 & v) {
 	return *this = *this * v;
 }
 
-vec4 vec4::operator /=(const vec4 &v) {
+vec4 &vec4::operator /=(const vec4 &v) {
 	return *this = *this / v;
 }

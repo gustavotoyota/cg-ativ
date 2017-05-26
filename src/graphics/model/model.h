@@ -10,11 +10,11 @@ class Mesh;
 
 class Model {
 public:
-    Model(std::string fileName, const Program& program);
-    Model(const Mesh &mesh, const Program& program);
+    Model(const Program& program, std::string fileName);
+    Model(const Program& program, const Mesh &mesh);
     ~Model();
 
-    void draw();
+    void draw() const;
 private:
     GLuint vao;
     GLuint vbo;

@@ -11,23 +11,23 @@ struct ivec2 {
     int operator [](int i) const;
     int &operator [](int i);
 
-    ivec2 operator +(int s);
-    ivec2 operator -(int s);
-    ivec2 operator *(int s);
-    ivec2 operator /(int s);
-    ivec2 operator +=(int s);
-    ivec2 operator -=(int s);
-    ivec2 operator *=(int s);
-    ivec2 operator /=(int s);
+    const ivec2 operator +(int s) const;
+    const ivec2 operator -(int s) const;
+    const ivec2 operator *(int s) const;
+    const ivec2 operator /(int s) const;
+    const ivec2 operator +(const ivec2 &v) const;
+    const ivec2 operator -(const ivec2 &v) const;
+    const ivec2 operator *(const ivec2 &v) const;
+    const ivec2 operator /(const ivec2 &v) const;
 
-    ivec2 operator +(const ivec2 &v);
-    ivec2 operator -(const ivec2 &v);
-    ivec2 operator *(const ivec2 &v);
-    ivec2 operator /(const ivec2 &v);
-    ivec2 operator +=(const ivec2 &v);
-    ivec2 operator -=(const ivec2 &v);
-    ivec2 operator *=(const ivec2 &v);
-    ivec2 operator /=(const ivec2 &v);
+    ivec2 &operator +=(int s);
+    ivec2 &operator -=(int s);
+    ivec2 &operator *=(int s);
+    ivec2 &operator /=(int s);
+    ivec2 &operator +=(const ivec2 &v);
+    ivec2 &operator -=(const ivec2 &v);
+    ivec2 &operator *=(const ivec2 &v);
+    ivec2 &operator /=(const ivec2 &v);
 };
 
 #endif

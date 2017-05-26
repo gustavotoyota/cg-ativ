@@ -1,4 +1,4 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
 #include <iostream>
 #include <exception>
@@ -6,50 +6,48 @@
 using namespace std;
 
 Program::Program() {
-	name = glCreateProgram();
+	handle = glCreateProgram();
 }
 
 Program::Program(vector<Shader> shaders): Program() {
     for (auto shader : shaders)
-        glAttachShader(name, shader.getName());
+        glAttachShader(handle, shader.getHandle());
+
     link();
+
     for (auto shader : shaders)
-        glDetachShader(name, shader.getName());
+        glDetachShader(handle, shader.getHandle());
 }
 
 Program::~Program() {
-	glDeleteProgram(name);
+	glDeleteProgram(handle);
 }
 
-GLuint Program::getName() const {
-    return name;
+GLuint Program::getHandle() const {
+    return handle;
 }
 
-GLuint Program::getLocation(std::string name) {
-    auto it = locations.find(name);
+GLuint Program::getLocation(std::string handle) {
+    auto it = locations.find(handle);
     if (it != locations.end())
         return it->second;
 
-    return locations[name] = glGetUniformLocation(this->name, name.c_str());
+    return locations[handle] = glGetUniformLocation(this->handle, handle.c_str());
 }
 
-void Program::link() {
-    glLinkProgram(name);
+void Program::link() const {
+    glLinkProgram(handle);
 
     GLint status;
-    glGetProgramiv(name, GL_LINK_STATUS, &status);
+    glGetProgramiv(handle, GL_LINK_STATUS, &status);
     if (status)
         return;
 
     GLchar log[1024];
     GLsizei length;
-    glGetProgramInfoLog(name, sizeof(log), &length, log);
+    glGetProgramInfoLog(handle, sizeof(log), &length, log);
 	
 	cerr << log << "\n";
 
     throw exception();
-}
-
-void Program::use() {
-    glUseProgram(name);
 }

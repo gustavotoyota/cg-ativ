@@ -15,13 +15,12 @@ public:
     Program(std::vector<Shader> shaders);
 	~Program();
 
-    GLuint getName() const;
+    GLuint getHandle() const;
 	GLuint getLocation(std::string name);
 
-	void link();
-	void use();
+	void link() const;
 private:
-	GLuint name;
+	GLuint handle;
 
 	std::unordered_map<std::string, GLuint> locations;
 };

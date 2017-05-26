@@ -12,32 +12,32 @@ struct vec3 {
 	vec3(float x, const vec2 &v);
 	vec3(const vec2 &v, float z = 0.0f);
     
-    float len();
-    float dist(const vec3 &v);
-    float dot(const vec3 &v);
-    vec3 cross(const vec3 &v);
-    vec3 normal();
+    float len() const;
+    float dist(const vec3 &v) const;
+    float dot(const vec3 &v) const;
+    const vec3 cross(const vec3 &v) const;
+    const vec3 normal() const;
 
 	float operator [](int i) const;
 	float &operator [](int i);
 
-    vec3 operator +(float s);
-    vec3 operator -(float s);
-    vec3 operator *(float s);
-    vec3 operator /(float s);
-    vec3 operator +=(float s);
-    vec3 operator -=(float s);
-    vec3 operator *=(float s);
-    vec3 operator /=(float s);
+    const vec3 operator +(float s) const;
+    const vec3 operator -(float s) const;
+    const vec3 operator *(float s) const;
+    const vec3 operator /(float s) const;
+    const vec3 operator +(const vec3 &v) const;
+    const vec3 operator -(const vec3 &v) const;
+    const vec3 operator *(const vec3 &v) const;
+    const vec3 operator /(const vec3 &v) const;
 
-    vec3 operator +(const vec3 &v);
-    vec3 operator -(const vec3 &v);
-    vec3 operator *(const vec3 &v);
-    vec3 operator /(const vec3 &v);
-    vec3 operator +=(const vec3 &v);
-    vec3 operator -=(const vec3 &v);
-    vec3 operator *=(const vec3 &v);
-    vec3 operator /=(const vec3 &v);
+    vec3 &operator +=(float s);
+    vec3 &operator -=(float s);
+    vec3 &operator *=(float s);
+    vec3 &operator /=(float s);
+    vec3 &operator +=(const vec3 &v);
+    vec3 &operator -=(const vec3 &v);
+    vec3 &operator *=(const vec3 &v);
+    vec3 &operator /=(const vec3 &v);
 };
 
 #endif

@@ -1,9 +1,9 @@
-#include <ativ1.h>
+#include <cg-ativ.h>
 
-Model::Model(std::string fileName, const Program& program): Model(Mesh(fileName), program) {
+Model::Model(const Program& program, std::string fileName): Model(program, Mesh(fileName)) {
 }
 
-Model::Model(const Mesh & mesh, const Program& program) {
+Model::Model(const Program& program, const Mesh & mesh) {
     GLuint location;
 
     int vertsSize = mesh.getVerts().size() * sizeof(vec3);
@@ -21,11 +21,11 @@ Model::Model(const Mesh & mesh, const Program& program) {
     glBufferSubData(GL_ARRAY_BUFFER, vertsSize, uvsSize, mesh.getUVs().data());
     glBufferSubData(GL_ARRAY_BUFFER, vertsSize + uvsSize, normalsSize, mesh.getNormals().data());
 
-    glEnableVertexAttribArray(location = glGetAttribLocation(program.getName(), "vert"));
+    glEnableVertexAttribArray(location = glGetAttribLocation(program.getHandle(), "vert"));
     glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
-    glEnableVertexAttribArray(location = glGetAttribLocation(program.getName(), "uv"));
+    glEnableVertexAttribArray(location = glGetAttribLocation(program.getHandle(), "uv"));
     glVertexAttribPointer(location, 2, GL_FLOAT, GL_FALSE, 0, (void *)(vertsSize));
-    glEnableVertexAttribArray(location = glGetAttribLocation(program.getName(), "normal"));
+    glEnableVertexAttribArray(location = glGetAttribLocation(program.getHandle(), "normal"));
     glVertexAttribPointer(location, 3, GL_FLOAT, GL_FALSE, 0, (void *)(vertsSize + uvsSize));
 
     glBindVertexArray(0);
@@ -38,7 +38,7 @@ Model::~Model() {
     glDeleteVertexArrays(1, &vao);
 }
 
-void Model::draw() {
+void Model::draw() const {
     glBindVertexArray(vao);
 
     glDrawArrays(GL_TRIANGLES, 0, count);
