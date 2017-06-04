@@ -5,14 +5,17 @@
 
 #include <GL/glew.h>
 
+class Texture;
+
 class Program;
 class Mesh;
 
 class Model {
 public:
     Model(const Program& program, std::string fileName);
-    Model(const Program& program, const Mesh &mesh);
     ~Model();
+	
+	Texture *getTexture();
 
     void draw() const;
 private:
@@ -20,6 +23,8 @@ private:
     GLuint vbo;
 
     GLsizei count;
+	
+	Texture *texture;
 };
 
 #endif

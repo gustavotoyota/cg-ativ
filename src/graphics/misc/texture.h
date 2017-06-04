@@ -22,8 +22,6 @@ public:
 	void loadPixels(void *pixels, int width, int height);
 	void loadFile(std::string fileName);
 	void loadMemory(void *addr, int size);
-
-	void bind();
 private:
 	GLuint handle;
 

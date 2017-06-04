@@ -15,7 +15,7 @@ Texture::Texture(std::string fileName): Texture() {
     loadFile(fileName);
 }
 
-Texture::Texture(void * addr, int size) {
+Texture::Texture(void * addr, int size): Texture() {
     loadMemory(addr, size);
 }
 
@@ -65,8 +65,4 @@ void Texture::loadMemory(void *addr, int size) {
 	loadPixels(image, width, height);
 
 	stbi_image_free(image);
-}
-
-void Texture::bind() {
-	glBindTexture(GL_TEXTURE_2D, handle);
 }
