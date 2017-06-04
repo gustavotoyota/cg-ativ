@@ -73,7 +73,7 @@ void draw() {
 		projView = proj * mat4::lookAt(vec3(cos(time) * 5, sin(time) * 5, 5), vec3(0, 0, 0.6f));
 	else if (camera == 1)
 		projView = proj * mat4::lookAt(vec3(-8, -8, 8), vec3(0, 0, 0.6f));
-	else if (camera == 2
+	else if (camera == 2)
 		projView = proj * mat4::lookAt(vec3(sin(time) * 8, -10, 8), vec3(0, 0, 0.6f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -92,7 +92,7 @@ void draw() {
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     bard->draw();
 
-    transform = projView[camera] * mat4::translate(vec3(cos(time * 10) * 1.3f, -1.4f, 0));
+    transform = projView * mat4::translate(vec3(cos(time * 10) * 1.3f, -1.4f, 0));
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     ziggs->draw();
 
