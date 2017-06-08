@@ -92,7 +92,7 @@ void draw() {
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     bard->draw();
 
-    transform = projView * mat4::translate(vec3(cos(time * 10) * 1.3f, -1.4f, 0));
+    transform = projView * mat4::translate(cubicBezier({vec3(-1, -1.4f, 0), vec3(-0.5f, -1.4f, 1), vec3(0.5f, -1.4f, 1), vec3(1, -1.4f, 0)}, sin(time * 5) / 2 + 0.5f));
     glUniformMatrix4fv(program->getLocation("transform"), 1, GL_FALSE, &transform[0][0]);
     ziggs->draw();
 

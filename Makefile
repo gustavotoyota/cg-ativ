@@ -18,6 +18,7 @@ CPPS=\
 	math/vec3.cpp\
 	math/vec4.cpp\
 	math/mat4.cpp\
+	math/curves.cpp\
 	graphics/misc/window.cpp\
 	graphics/misc/texture.cpp\
 	graphics/program/program.cpp\

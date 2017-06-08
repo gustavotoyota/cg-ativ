@@ -7,6 +7,7 @@
 #include "math/vec3.h"
 #include "math/vec4.h"
 #include "math/mat4.h"
+#include "math/curves.h"
 
 #include "graphics/misc/window.h"
 #include "graphics/misc/texture.h"
