@@ -1,7 +1,8 @@
 #ifndef MAT4_HEADER
 #define MAT4_HEADER
 
-struct vec4;
+#include "vec3.h"
+#include "vec4.h"
 
 struct mat4 {
 	vec4 cols[4];

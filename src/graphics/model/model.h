@@ -3,6 +3,7 @@
 
 #include <string>
 
+#define GLEW_STATIC
 #include <GL/glew.h>
 
 class Texture;
@@ -12,10 +13,8 @@ class Mesh;
 
 class Model {
 public:
-    Model(const Program& program, std::string fileName);
+    Model(const Program *program, std::string fileName);
     ~Model();
-	
-	Texture *getTexture();
 
     void draw() const;
 private:
@@ -23,8 +22,6 @@ private:
     GLuint vbo;
 
     GLsizei count;
-	
-	Texture *texture;
 };
 
 #endif

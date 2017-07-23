@@ -1,10 +1,13 @@
-#include <cg-ativ.h>
+#include "texture.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 Texture::Texture() {
 	glGenTextures(1, &handle);
+    glBindTexture(GL_TEXTURE_2D, handle);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 Texture::Texture(void * pixels, int width, int height): Texture() {

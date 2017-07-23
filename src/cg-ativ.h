@@ -11,11 +11,14 @@
 
 #include "graphics/misc/window.h"
 #include "graphics/misc/texture.h"
-
 #include "graphics/program/program.h"
 #include "graphics/program/shader.h"
-
 #include "graphics/model/mesh.h"
 #include "graphics/model/model.h"
+
+#include "phys2/world.h"
+#include "phys2/body.h"
+#include "phys2/shape.h"
+#include "phys2/contact.h"
 
 #endif

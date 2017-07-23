@@ -1,6 +1,9 @@
-#include <cg-ativ.h>
+#include "vec4.h"
 
 #include <math.h>
+
+#include "vec2.h"
+#include "vec3.h"
 
 vec4::vec4(): vec4(0.0f, 0.0f, 0.0f, 0.0f) {
 }

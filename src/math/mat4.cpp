@@ -1,4 +1,4 @@
-#include <cg-ativ.h>
+#include "mat4.h"
 
 #include <math.h>
 
@@ -15,8 +15,8 @@ const mat4 mat4::translate(const vec3 & v) {
 const mat4 mat4::rotate(const vec3 & v, float angle) {
     mat4 res;
 
-    float c = cos(angle);
-    float s = sin(angle);
+    float c = (float)cos(angle);
+    float s = (float)sin(angle);
     float n = 1.0f - c;
 
     res[0][0] = n * v.x * v.x + c;

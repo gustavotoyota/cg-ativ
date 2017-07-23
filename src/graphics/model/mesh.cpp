@@ -1,6 +1,9 @@
-#include <cg-ativ.h>
+#include "mesh.h"
 
 #include <fstream>
+
+#include <math/vec2.h>
+#include <math/vec3.h>
 
 using namespace std;
 

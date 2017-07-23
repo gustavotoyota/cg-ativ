@@ -1,7 +1,9 @@
-#include <cg-ativ.h>
+#include "program.h"
 
 #include <iostream>
 #include <exception>
+
+#include "shader.h"
 
 using namespace std;
 
