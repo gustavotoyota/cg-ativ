@@ -6,13 +6,14 @@ varying vec3 varPos;
 varying vec2 varUv;
 varying vec3 varNormal;
 
-uniform mat4 model;
+uniform mat3 model3;
+uniform mat4 model4;
 uniform mat4 transform;
 
 void main() {
     gl_Position = transform * vec4(vert, 1.0);
     
-    varPos = vec3(model * vec4(vert, 1.0));
+    varPos = vec3(model4 * vec4(vert, 1.0));
     varUv = uv;
-    varNormal = normalize(mat3(model) * normal);
+    varNormal = normalize(model3 * normal);
 }

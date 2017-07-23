@@ -2,7 +2,7 @@
 #define PHYS2_WORLD_HEADER
 
 #include <list>
-#include <unordered_map>
+#include <map>
 
 #include <math/vec2.h>
 
@@ -41,8 +41,8 @@ private:
 
     std::list<Contact> contacts;
     bool (*contactCallback)(Contact *contact);
-    std::unordered_map<Shape::Type::Enum,
-        std::unordered_map<Shape::Type::Enum,
+    std::map<Shape::Type::Enum,
+        std::map<Shape::Type::Enum,
         bool (World::*)(Body *, Body *, Contact *)>> contactFunc;
 
     bool contactRectRect(Body *bodyA, Body *bodyB, Contact *contact);

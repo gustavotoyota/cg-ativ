@@ -5,7 +5,6 @@
 #include <vector>
 #include <unordered_map>
 
-#define GLEW_STATIC
 #include <GL/glew.h>
 
 class Shader;

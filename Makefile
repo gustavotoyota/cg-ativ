@@ -17,6 +17,7 @@ CPPS=\
 	math/vec2.cpp\
 	math/vec3.cpp\
 	math/vec4.cpp\
+	math/mat3.cpp\
 	math/mat4.cpp\
 	math/curves.cpp\
 	graphics/misc/window.cpp\
@@ -24,7 +25,11 @@ CPPS=\
 	graphics/program/program.cpp\
 	graphics/program/shader.cpp\
 	graphics/model/mesh.cpp\
-	graphics/model/model.cpp
+	graphics/model/model.cpp\
+    phys2/world.cpp\
+    phys2/body.cpp\
+    phys2/shape.cpp\
+    phys2/contact.cpp
 ifeq ($(OS),Windows_NT)
 LIBS=\
 	SDL2main\
