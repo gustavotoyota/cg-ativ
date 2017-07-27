@@ -7,7 +7,7 @@
 mat3::mat3() {
     for (int i = 0; i < 3; ++i)
         for (int j = 0; j < 3; ++j)
-            cols[i][j] = i == j ? 1 : 0;
+            cols[i][j] = i == j ? 1.0f : 0.0f;
 }
 
 mat3::mat3(const mat4 &m) {

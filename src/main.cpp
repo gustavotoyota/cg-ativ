@@ -225,7 +225,7 @@ void init() {
 
     // GUI
     // - Menu
-    guiModel = new Model(modelProgram, "res/gui/gui.obj");
+    guiModel = new Model(guiProgram, "res/gui/gui.obj");
     menuTex = new Texture("res/gui/menu.png");
     nextTex = new Texture("res/gui/next.png");
     deadTex = new Texture("res/gui/dead.png");
@@ -258,7 +258,7 @@ void init() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Time
-    now = clock() / CLOCKS_PER_SEC / 1000.0f;
+    now = clock() / (float)CLOCKS_PER_SEC;
     timeStep = 1 / 30.0f;
     accum = 0.0f;
 }
@@ -396,7 +396,7 @@ void run() {
             }
         }
 
-        float aux = clock() / 1000.0f;
+        float aux = clock() / (float)CLOCKS_PER_SEC;
         accum += aux - now;
         now = aux;
 
